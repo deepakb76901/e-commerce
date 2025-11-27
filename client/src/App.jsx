@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 // # Components
 import Protected from "./components/auth/Protected";
 import { fetchItemsByUserIdAsync } from "./Redux/slices/CartSlice";
-import { selectLoggedInUser, auto_Login_Async } from "./Redux/slices/authSlice";
+import { selectLoggedInUser,auto_Login_Async } from "./Redux/slices/authSlice";
 import LogOut from "./components/auth/Logout";
 import ProtectedAdmin from "./components/auth/ProtectedAdmin";
 import { fetchLoggedInUserAsync } from "./Redux/slices/userSlice";
@@ -31,9 +31,6 @@ import AdminHome from "./pages/AdminHome";
 import Checkout from "./pages/Checkout";
 import PageNotFound from "./pages/404";
 import Home from "./pages/Home";
-import SignInPage from "./components/auth/sign-in";
-import SignUpPage from "./components/auth/sign-up";
-import Align_Center from "./components/Align_Center";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,7 +40,7 @@ function App() {
   useEffect(() => {
     console.log("Dispatching start");
 
-    // dispatch(auto_Login_Async())
+      // dispatch(auto_Login_Async())
   }, []);
 
   useEffect(() => {
@@ -59,30 +56,13 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route
-            path="/sign-in"
-            element={
-              <Align_Center>
-                <SignInPage />
-              </Align_Center>
-            }
-          />
-          <Route
-            path="/sign-up"
-            element={
-              <Align_Center>
-                <SignUpPage />
-              </Align_Center>
-            }
-          />
-          <Route path="/logout" element={<LogOut />} />
-          <Route
             path="/"
             element={
-              <>
+              <Protected>
                 <Navbar />
                 <Home />
                 <Footer />
-              </>
+              </Protected>
             }
           />
           <Route
@@ -95,6 +75,9 @@ function App() {
               </ProtectedAdmin>
             }
           />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/logout" element={<LogOut />} />
           <Route path="/fp" element={<ForgotPasswordPage />} />
           <Route
             path="*"
@@ -109,61 +92,61 @@ function App() {
           <Route
             path="/cart"
             element={
-              <>
+              <Protected>
                 <Navbar />
                 <CartPage />
                 <Footer />
-              </>
+              </Protected>
             }
           />
           <Route
             path="/checkout"
             element={
-              <>
+              <Protected>
                 <Navbar />
                 <Checkout />
                 <Footer />
-              </>
+              </Protected>
             }
           />
           <Route
             path="/product-detail/:id"
             element={
-              <>
+              <Protected>
                 <Navbar />
                 <ProductDetailsPage />
                 <Footer />
-              </>
+              </Protected>
             }
           />
           <Route
             path="/profile"
             element={
-              <>
+              <Protected>
                 <Navbar />
                 <UserProfilePage />
                 <Footer />
-              </>
+              </Protected>
             }
           />
           <Route
             path="/orders"
             element={
-              <>
+              <Protected>
                 <Navbar />
                 <UserOrderPage />
                 <Footer />
-              </>
+              </Protected>
             }
           />
           <Route
             path="/order-success/:id"
             element={
-              <>
+              <Protected>
                 <Navbar />
                 <OrderSuccessPage />
                 <Footer />
-              </>
+              </Protected>
             }
           />
           <Route

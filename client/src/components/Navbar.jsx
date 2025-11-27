@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "../Redux/slices/authSlice";
 import { TextInput } from "flowbite-react";
 import { Search } from "lucide-react";
-import {useUser} from "@clerk/clerk-react"
 
 const navigation = [
   { name: "Products", link: "/", isAdmin: false },
@@ -26,8 +25,7 @@ function classNames(...classes) {
 
 function Navbar({ children }) {
   const items = useSelector(selectItems);
-  
-  const {user,isLoaded, isSignedIn} = useUser();
+  const user = useSelector(selectLoggedInUser);
   const { theme } = useSelector((state) => state.theme);
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -65,7 +63,7 @@ function Navbar({ children }) {
                   <div className="flex space-x-2">
                     {navigation.map(
                       (item) =>
-                        item.isAdmin === user && (
+                        item.isAdmin === user.isAdmin && (
                           <Link
                             key={item.name}
                             to={item.link}
@@ -148,7 +146,7 @@ function Navbar({ children }) {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full object-cover"
-                        src={user?.imageUrl}
+                        src={user.profilePicture}
                         alt=""
                       />
                     </Menu.Button>
@@ -213,7 +211,7 @@ function Navbar({ children }) {
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map(
                 (item) =>
-                  item.isAdmin === user && (
+                  item.isAdmin === user.isAdmin && (
                     <Link
                       key={item.name}
                       to={item.link}

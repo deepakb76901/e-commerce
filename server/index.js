@@ -35,7 +35,9 @@ connectDB();
 
 app.listen(
   process.env.PORT,
-  console.log("Server is listening on PORT : " + process.env.PORT)
+  console.log(
+    "Server is listening on PORT : \n" + `http://localhost:${process.env.PORT}`
+  )
 );
 
 // app.use((req, res, next) => {
