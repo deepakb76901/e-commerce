@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 // # Components
 import Protected from "./components/auth/Protected";
 import { fetchItemsByUserIdAsync } from "./Redux/slices/CartSlice";
-import { selectLoggedInUser,auto_Login_Async } from "./Redux/slices/authSlice";
+import { selectLoggedInUser, auto_Login_Async } from "./Redux/slices/authSlice";
 import LogOut from "./components/auth/Logout";
 import ProtectedAdmin from "./components/auth/ProtectedAdmin";
 import { fetchLoggedInUserAsync } from "./Redux/slices/userSlice";
@@ -31,6 +31,7 @@ import AdminHome from "./pages/AdminHome";
 import Checkout from "./pages/Checkout";
 import PageNotFound from "./pages/404";
 import Home from "./pages/Home";
+import About from "./pages/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function App() {
   useEffect(() => {
     console.log("Dispatching start");
 
-      // dispatch(auto_Login_Async())
+    // dispatch(auto_Login_Async())
   }, []);
 
   useEffect(() => {
@@ -78,6 +79,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/logout" element={<LogOut />} />
+          <Route path="/about" element={<About />}></Route>
           <Route path="/fp" element={<ForgotPasswordPage />} />
           <Route
             path="*"

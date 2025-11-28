@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { saveImageAsync, selectUserInfo, updateUserAsync } from "../Redux/slices/userSlice";
+import {
+  saveImageAsync,
+  selectUserInfo,
+  updateUserAsync,
+} from "../Redux/slices/userSlice";
 import { useForm } from "react-hook-form";
 import { Button, FileInput } from "flowbite-react";
-
 
 function Profile() {
   const dispatch = useDispatch();
@@ -52,11 +55,7 @@ function Profile() {
     setShowAddAddressForm(false);
   };
 
-  const handleUploadImage = async () => {
-    
-  };
-
- 
+  const handleUploadImage = async () => {};
 
   return (
     <div className="flex justify-center min-h-screen">
@@ -93,18 +92,6 @@ function Profile() {
                 </Button>
               </div>
             )} */}
-            <Button
-              onClick={(e) => {
-                setShowAddAddressForm(true);
-                setSelectedEditIndex(-1);
-              }}
-              type="submit"
-              color="success"
-              className="ml-3 mb-3"
-              size={"sm"}
-            >
-              Add New Address
-            </Button>
           </div>
           {/* <div className="space-y-2 text-center ml-3">
             <img
@@ -138,7 +125,10 @@ function Profile() {
               <div className="space-y-12">
                 <div>
                   <div className="border-b border-gray-900/10 pb-12 lg:px-10">
-                    <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                    <span className="text-xl underline font-semibold">
+                      Enter Your Address Here
+                    </span>
+                    <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-6">
                       <div className="sm:col-span-4">
                         <label
                           htmlFor="name"
@@ -291,7 +281,20 @@ function Profile() {
                 </div>
               </div>
             </form>
-          ) : null}
+          ) : (
+            <Button
+              onClick={(e) => {
+                setShowAddAddressForm(true);
+                setSelectedEditIndex(-1);
+              }}
+              type="submit"
+              color="success"
+              className="ml-3 mb-3"
+              size={"sm"}
+            >
+              Add New Address
+            </Button>
+          )}
         </div>
 
         <div className="mt-8 p-4  border-t border-gray-700 px-4 py-6 sm:px-6">

@@ -111,18 +111,27 @@ function Navbar({ children }) {
                       <IoSunnyOutline className="text-gray-200 h-6 w-auto cursor-pointer" />
                     )}
                   </button> */}
-                {/* Shopping Cart Icon */}
-                <button
+
+                {/* <button
                   onClick={() =>
                     setShowSearch((prev) => (prev === true ? false : true))
-                  }
-                >
-                  {showSearch === true ? (
+                    }
+                    >
+                    {showSearch === true ? (
                     <XMarkIcon className="text-xl md:hidden h-7 w-7 text-gray-600" />
                   ) : (
                     <Search className="md:hidden text-xl text-center h-5 w-5 text-gray-600 font-medium mx-1" />
-                  )}
-                </button>
+                    )}
+                    </button> */}
+
+                <Link
+                  to="/about"
+                  className="pr-3 font-medium text-gray-700 hover:text-gray-900 "
+                >
+                  About Us
+                </Link>
+
+                {/* Shopping Cart Icon */}
                 <Link to="/cart">
                   <button
                     type="button"
